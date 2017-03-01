@@ -50,7 +50,7 @@ else {
     <div class="background"></div>
     <div class="background_color"></div>
 
-    <div class="container">
+    <div class="container login">
         <div class="logs">
             <?
             echo '<pre>';

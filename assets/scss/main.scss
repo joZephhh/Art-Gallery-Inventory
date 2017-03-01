@@ -1,124 +1,16 @@
 @import "components/_fonts";
 @import "components/fontawesome/font-awesome.scss";
 
-$main_color:#1B3C59;
+$main_color:#4CAF50;
+$secondary_color:#66BB6A;
 
 body,html {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
     font-family: "Lato", sans-serif;
-    .logs {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: white;
-        padding: 20px;
-    }
-    .background {
-        position: absolute;
-        top:0px;
-        left:0px;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-image: url("../img/background_login.jpg");
-        z-index: -2;
-    }
-    .background_color {
-        position: absolute;
-        top:0px;
-        left:0px;
-        width: 100%;
-        height: 100%;
-        background: $main_color;
-        opacity: 0.8;
-        z-index: -1;
-    }
-    .container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .form {
-            width: 500px;
-            height: 500px;
-            background: white;
-            border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            -webkit-box-shadow: 2px 2px 30px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 2px 2px 30px 0px rgba(0,0,0,0.75);
-box-shadow: 2px 2px 30px 0px rgba(0,0,0,0.75);
-            i {
-                font-size: 40px;
-                color:$main_color;
-            }
-            h3 {
-                color:$main_color;
-                font-size: 24px;
-            }
-            .form_row {
-                width: 350px;
-                margin: 15px 0px;
-            label, input {
-                display: block;
-                margin: 0 auto;
-                width: 100%;
-            }
-            label {
-                text-align: left;
-                margin-bottom: 10px;
-                color: lightgrey;
-                font-weight: 700;
-                color:$main_color;
-                padding-left: 10px;
-                span {
-                    color:red;
-                    font-weight: 400;
-                    font-size: 14px;
-                }
-            }
-            input {
-                height: 40px;
-                line-height: 40px;
-                border: none;
-                background:rgb(227, 227, 227);
-                padding-left: 15px;
-                color: black;
-                font-weight: 700;
-                border: 2px solid transparent;
-                border-radius: 5px;
-                transition: 0.3s border;
-                &:focus{
-                    outline: none;
-                    border-color:$main_color;
-                }
-
-            }
-
-
 }
-input[type="submit"] {
-    margin-top: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 15px 50px;
-    background: $main_color;
-    color:white;
-    text-align: center;
-    border-radius: 15px;
-}
-        }
-    }
-}
+
+@import "components/_login";
+@import "components/_panel";
