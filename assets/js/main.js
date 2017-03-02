@@ -3,9 +3,18 @@ inventory.el = {}
 
 inventory.el.body = document.querySelector(".container.panel");
 inventory.el.container = inventory.el.body.querySelector(".container-content");
+
+inventory.el.modal = inventory.el.container.querySelector(".modal");
+inventory.el.modal_close = inventory.el.modal.querySelector(".modal_button");
 inventory.el.products = inventory.el.container.querySelectorAll(".product");
 inventory.el.edit = inventory.el.container.querySelectorAll(".edit");
 inventory.el.valid = inventory.el.container.querySelectorAll(".valid");
+inventory.el.delete = inventory.el.container.querySelectorAll(".delete");
+
+
+
+inventory.props  = {};
+inventory.props.isEditing = false;
 
 
 console.log(inventory.el.edit);
@@ -13,6 +22,8 @@ console.log(inventory.el.edit);
 for (let i = 0; i < inventory.el.edit.length; i++) {
     inventory.el.edit[i].addEventListener("click", function(e) {
         e.preventDefault();
+        if (!inventory.props.isEditing) {
+        inventory.props.isEditing = true;
         this.classList.add("hide");
         this.parentElement.querySelector(".valid").classList.remove("hide");
         let self = this.parentElement.parentElement.parentElement;
@@ -24,10 +35,14 @@ for (let i = 0; i < inventory.el.edit.length; i++) {
             let _field = fields[j].querySelector("input,textarea");
             _field.removeAttribute("disabled")
         }
-
+}
+else {
+inventory.el.modal.classList.add("active");
+}
     })
 }
 
+// valid modifications
 for (let u = 0; u < inventory.el.valid.length; u++) {
         inventory.el.valid[u].addEventListener("click", function(e) {
             e.preventDefault();
@@ -36,36 +51,8 @@ for (let u = 0; u < inventory.el.valid.length; u++) {
 
         })
 }
-// inventory.el.actions.edit.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     this.classList.add("hide");
-//     inventory.el.actions.valid.classList.remove("hide");
-//     for (let i = 0; i < inventory.el.products.length; i++) {
-//         let fields = inventory.el.products[i].querySelectorAll(".fields");
-//         for (let j = 0; j < fields.length; j++) {
-//             fields[j].classList.add("editable");
-//             let _field = fields[j].querySelector("input,textarea");
-//             _field.removeAttribute("disabled");
-//
-//         }
-//     }
-//
-// })
-//
-// inventory.el.actions.valid.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     this.classList.add("hide");
-//     let parent = this.parentElement.parentElement.parentElement;
-//     parent.submit();
-//     inventory.el.actions.edit.classList.remove("hide");
-//     for (let i = 0; i < inventory.el.products.length; i++) {
-//         let fields = inventory.el.products[i].querySelectorAll(".fields");
-//         for (let j = 0; j < fields.length; j++) {
-//             fields[j].classList.remove("editable");
-//             let _field = fields[j].querySelector("input,textarea");
-//             _field.setAttribute("disabled", "");
-//
-//         }
-//     }
-//
-// })
+
+inventory.el.modal_close.addEventListener("click", function(e) {
+    e.preventDefault();
+    inventory.el.modal.classList.remove("active");
+})

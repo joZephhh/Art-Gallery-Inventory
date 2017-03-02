@@ -43,11 +43,18 @@
             <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
         </ul>
         <div class="container-content">
+            <div class="modal">
+                <p><i class="fa fa-exclamation" aria-hidden="true"></i></p>
+                <p>Vous ne pouvez que modifier un seul élément à la fois.</p>
+                <div class="modal_button">
+                    <a href="#">OK</a>
+                </div>
+            </div>
 <?php
     foreach ($products as $key => $_product) {
 ?>
 <form class="product"  action="#" method="POST">
-    <input type="hidden" name="type" value="edit">
+    <input type="hidden" name="type" value="edit" class="send_type">
     <input type="hidden" name="id" value="<?= $_product->id ?>">
     <div class="product_content <?= $error_product["id"] == $_product->id ? 'editable' : '' ?>">
         <div class="product_actions">
