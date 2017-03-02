@@ -113,6 +113,8 @@
                 width: 100%;
                 height: 100%;
                 background: url("../img/tableau1.jpg");
+                background-size: 100%;
+                background-position: center;
                 color: white;
                 border-radius: 5px;
                 padding: 15px;
@@ -121,6 +123,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 position: relative;
+                transition: 0.5s background-size;
 
                 .product_actions {
                     position: absolute;
@@ -168,7 +171,7 @@
                     }
                 }
 
-                .product_fiels_info {
+                .product_fields_info {
                     width: 100%;
                     height: auto;
                     border-radius: 5px;
@@ -185,17 +188,7 @@
                             color: white;
                         }
 
-                        &.editable {
-                            input,
-                            textarea {
-                                background: rgba(231, 231, 231, 0.4);
 
-                                &:focus {
-                                    background: #red;
-                                    background: rgba(76,175,80,0.7);
-                                }
-                            }
-                        }
                     }
 
                     .product_title {
@@ -241,17 +234,38 @@
                         flex-direction: row;
                         justify-content: space-between;
                     }
+
                 }
 
                 &:hover {
+                    background-size: 105%;
                     .product_actions {
                         opacity: 1;
                     }
 
-                    .product_fiels_info {
+                    .product_fields_info {
                         opacity: 1;
                     }
                 }
+                &.editable {
+                    .product_actions {
+                        opacity: 1;
+                    }
+                    .product_fields_info {
+                        opacity: 1;
+                    .fields {
+                    input,
+                    textarea {
+                        background: rgba(231, 231, 231, 0.4);
+
+                        &:focus {
+                            background: #red;
+                            background: rgba(76,175,80,0.7);
+                        }
+                    }
+                }
+            }
+        }
             }
         }
     }
