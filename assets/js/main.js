@@ -45,10 +45,8 @@ inventory.el.modal.classList.add("active");
 for (let u = 0; u < inventory.el.valid.length; u++) {
         inventory.el.valid[u].addEventListener("click", function(e) {
             e.preventDefault();
-
             let self = this.parentElement.parentElement.parentElement;
             self.submit();
-
         })
 }
 
