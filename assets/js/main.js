@@ -52,6 +52,17 @@ for (let u = 0; u < inventory.el.valid.length; u++) {
         })
 }
 
+
+for (var d = 0; d < inventory.el.delete.length; d++) {
+    inventory.el.delete[d].addEventListener("click", function(e) {
+        e.preventDefault();
+        let self = this.parentElement.parentElement.parentElement;
+        self.querySelector(".send_type").setAttribute("value","delete")
+        self.submit();
+    })
+}
+
+
 inventory.el.modal_close.addEventListener("click", function(e) {
     e.preventDefault();
     inventory.el.modal.classList.remove("active");

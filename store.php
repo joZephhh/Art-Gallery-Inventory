@@ -5,6 +5,9 @@
         if($_POST["type"] === "edit") {
             include 'components/edit_products.php';
         }
+        else if ($_POST["type"] === "delete") {
+            include 'components/delete_products.php';
+        }
     }
 
     $query = $pdo->query('SELECT * FROM products');
