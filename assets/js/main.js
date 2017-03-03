@@ -17,8 +17,7 @@ inventory.props  = {};
 inventory.props.isEditing = false;
 
 
-console.log(inventory.el.edit);
-
+//edit
 for (let i = 0; i < inventory.el.edit.length; i++) {
     inventory.el.edit[i].addEventListener("click", function(e) {
         e.preventDefault();
@@ -46,6 +45,7 @@ inventory.el.modal.classList.add("active");
 for (let u = 0; u < inventory.el.valid.length; u++) {
         inventory.el.valid[u].addEventListener("click", function(e) {
             e.preventDefault();
+
             let self = this.parentElement.parentElement.parentElement;
             self.submit();
 
@@ -56,9 +56,14 @@ for (let u = 0; u < inventory.el.valid.length; u++) {
 for (var d = 0; d < inventory.el.delete.length; d++) {
     inventory.el.delete[d].addEventListener("click", function(e) {
         e.preventDefault();
+        if (!inventory.props.isEditing) {
         let self = this.parentElement.parentElement.parentElement;
         self.querySelector(".send_type").setAttribute("value","delete")
         self.submit();
+    }
+    else {
+    inventory.el.modal.classList.add("active");
+    }
     })
 }
 

@@ -48,7 +48,7 @@
         <div class="container-content">
             <div class="modal">
                 <p><i class="fa fa-exclamation" aria-hidden="true"></i></p>
-                <p>Vous ne pouvez que modifier un seul élément à la fois.</p>
+                <p>Vous ne pouvez qu'effectuer une seule action à la fois.</p>
                 <div class="modal_button">
                     <a href="#">OK</a>
                 </div>
