@@ -94,7 +94,7 @@
         // flex-direction: row;
         // flex-wrap: wrap;
         // justify-content: flex-start;
-        // overflow-y: scroll;
+        overflow-y: scroll;
         padding-top: 10px;
         padding-left: 10px;
         .modal {
@@ -146,6 +146,11 @@
             -moz-box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.75);
             box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.75);
             position: relative;
+            &:last-of-type {
+                .product_content {
+                    margin-bottom: 40px;
+                }
+            }
 
 
             .product_content {
