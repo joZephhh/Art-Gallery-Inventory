@@ -7,7 +7,6 @@
     $numberAvailable= (int)$_POST["numberAvailable"];
     if (empty($name)) {
         $error_product["error_name"] = "Missing Value";
-        $error_product["id"]=$id;
     }
     if (empty($artist)) {
         $error_product["error_artist"] = "Missing Value";
@@ -25,6 +24,7 @@
         $error_product["id"]=$id;
     }
     else if (empty($error_product)) {
+        $error_product["id"]="none";
         $prepare = $pdo -> prepare("UPDATE products
             SET name = :name,
             artist = :artist,

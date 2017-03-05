@@ -1,7 +1,7 @@
 <?php
-    include "components/db.php";
-    $error_product=array();
-    $error_add_product=array();
+    include "components/db.php"; // init database
+    $error_product=array(); // init errors
+    $error_add_product=array(); // init errors
     if(!empty($_POST)) {
         if($_POST["type"] === "add") {
             include 'components/add_products.php';
@@ -14,14 +14,19 @@
         }
     }
     else {
+        // empty the $_POST array
         $_POST["type"]="";
         $_POST["name"]="";
         $_POST["artist"]="";
         $_POST["description"]="";
         $_POST["price"]="";
         $_POST["numberAvailable"]="";
+
+        // define id as none to avoid errors further
+        $error_product["id"]="none";
     }
 
+    // retrieve all products
     $query = $pdo->query('SELECT * FROM products');
     $products = $query->fetchAll();
 ?>
@@ -41,6 +46,7 @@
             <?php
             echo '<pre>';
             print_r($_POST);
+            print_r($error_product);
             echo '</pre>';
              ?>
         </div>
@@ -58,6 +64,7 @@
             <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
         </ul>
         <div class="container-content">
+            <!-- Show when user try to edit 2 things -->
             <div class="modal">
                 <p><i class="fa fa-exclamation" aria-hidden="true"></i></p>
                 <p>Vous ne pouvez qu'effectuer une seule action à la fois.</p>
@@ -75,6 +82,9 @@
             $error_number =false;
             $edit = false;
             $add = false;
+            $isError = false;
+
+
 
             // if the form submited is for add products
             if($_POST["type"]=="add") {
@@ -88,7 +98,13 @@
             // the form submited is for edit products
             else if ($_POST["type"]=="edit") {
                 $edit = true;
+                if (array_key_exists('error_name', $error_product)) {$error_name = true;}
+                if (array_key_exists('error_artist', $error_product)) {$error_artist = true;}
+                if (array_key_exists('error_description', $error_product)) {$error_description = true;}
+                if (array_key_exists('error_price', $error_product)) {$error_price = true;}
+                if (array_key_exists('error_numberAvailable', $error_product)) {$error_number = true;}
             }?>
+
             <form class="product add_form" action="#" method="post">
                     <input type="hidden" name="type" value="add">
                     <div class="product_content editable">
@@ -100,21 +116,21 @@
                             </div>
                             <div class="product_fields_info">
                                 <div class="product_title fields">
-                                    <input type="text" name="name"  value="<?=  $error_name ? 'Missing value' : $add ? $_POST["name"] :'' ?>" placeholder="Nom" style="<?= $error_name ? 'background:red;' : '' ?>">
+                                    <input type="text" name="name"  value="<?=  $add && $error_name ? 'Missing value' : $add ? $_POST["name"] :'' ?>" placeholder="Nom" style="<?= $add && $error_name  ? 'background:red;' : '' ?>">
                                 </div>
                                 <div class="product_artist fields">
-                                    <input type="text" name="artist" value="<?= $error_artist ? 'Missing value' : $add ? $_POST["artist"] : '' ?>"  placeholder="Artiste" style="<?= $error_artist ? 'background:red;' : '' ?>">
+                                    <input type="text" name="artist" value="<?=$add &&  $error_artist ? 'Missing value' : $add ? $_POST["artist"] : '' ?>"  placeholder="Artiste" style="<?= $add && $error_artist ? 'background:red;' : '' ?>">
                                 </div>
                                 <div class="product_desc fields">
-                                    <textarea name="description"  placeholder="Description" style="<?= $error_description ? 'background:red;' : '' ?>" ><?= $error_description ? 'Missing value' : $add ? $_POST["description"] :'' ?></textarea>
+                                    <textarea name="description"  placeholder="Description" style="<?= $add && $error_description ? 'background:red;' : '' ?>" ><?= $add && $error_description ? 'Missing value' : $add ? $_POST["description"] :'' ?></textarea>
                                 </div>
                             </div>
                             <div class="product_fields_info second">
                                 <div class="product_price fields">
-                                    <input type="text" name="price" value="<?= $error_price ? 'Missing value' : $add ? $_POST["price"] : '' ?>"  placeholder="Prix"  style="<?= $error_price ? 'background:red;' : '' ?>">
+                                    <input type="text" name="price" value="<?= $add && $error_price ? 'Missing value' : $add ? $_POST["price"] : '' ?>"  placeholder="Prix"  style="<?= $add && $error_price ? 'background:red;' : '' ?>">
                                 </div>
                                 <div class="product_number fields">
-                                    <input type="text" name="numberAvailable" value="<?= $error_number ? 'Missing value' : $add ? $_POST["numberAvailable"] : '' ?>"  placeholder="Nombre de copies" style="<?= $error_number ? 'background:red;' : '' ?>">
+                                    <input type="text" name="numberAvailable" value="<?= $add && $error_number ? 'Missing value' : $add ? $_POST["numberAvailable"] : '' ?>"  placeholder="Nombre de copies" style="<?= $add && $error_number ? 'background:red;' : '' ?>">
                                 </div>
                             </div>
 
@@ -122,24 +138,42 @@
             </form>
 <?php
     foreach ($products as $key => $_product) {
+        if ($edit) {
+            if($error_product["id"] == $_product->id) {
+                $isError =true;
+            }
+            else {
+                $isError = false;
+            }
+        }
 ?>
 <form class="product"  action="#" method="POST">
     <input type="hidden" name="type" value="edit" class="send_type">
     <input type="hidden" name="id" value="<?= $_product->id ?>">
-    <div class="product_content <?= $error_product["id"] == $_product->id ? 'editable' : '' ?>">
+    <div class="product_content <?= $isError ? 'editable' : '' ?>">
         <div class="product_actions">
             <div class="action edit"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
             <div class="action delete"><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></div>
             <div class="action valid hide"><a href=""><i class="fa fa-check" aria-hidden="true"></i></a></div>
         </div>
         <div class="product_fields_info">
-            <div class="product_title fields"><input type="text" name="name"  value="<?=  array_key_exists('error_name', $error_product) && $error_product["id"] == $_product->id ? 'Missing value' : $_product->name ?>"  style="<?= array_key_exists('error_name', $error_product) && $error_product["id"] == $_product->id ? 'background:red;' : '' ?>"  disabled></div>
-            <div class="product_artist fields"><input type="text" name="artist" value="<?=  array_key_exists('error_artist', $error_product) && $error_product["id"] == $_product->id  ? 'Missing value' : $_product->artist ?>"  style="<?= array_key_exists('error_artist', $error_product) && $error_product["id"] == $_product->id ? 'background:red;' : '' ?>" disabled></div>
-            <div class="product_desc fields"><textarea name="description" style="<?= array_key_exists('error_description', $error_product) && $error_product["id"] == $_product->id  ? 'background:red;' : '' ?>" disabled><?= array_key_exists('error_description', $error_product) && $error_product["id"] == $_product->id  ? 'Missing value' : $_product->description ?></textarea></div>
+            <div class="product_title fields">
+                <input type="text" name="name"  value="<?=  $edit && $error_name && $isError ? 'Missing value' : $_product->name ?>"  style="<?= $edit && $error_name && $isError ? 'background:red;' : '' ?>"  disabled>
+            </div>
+            <div class="product_artist fields">
+                <input type="text" name="artist" value="<?=   $edit && $error_artist && $isError  ? 'Missing value' : $_product->artist ?>"  style="<?=  $edit && $error_artist && $isError ? 'background:red;' : '' ?>" disabled>
+            </div>
+            <div class="product_desc fields">
+                <textarea name="description" style="<?=  $edit && $error_description && $isError  ? 'background:red;' : '' ?>" disabled><?= $edit && $error_description && $isError  ? 'Missing value' : $_product->description ?></textarea>
+            </div>
         </div>
         <div class="product_fields_info second">
-            <div class="product_price fields"><input type="text" name="price" value="<?= array_key_exists('error_price', $error_product) && $error_product["id"] == $_product->id ? 'Missing value' : $_product->price .' €'?>" style="<?= array_key_exists('error_price', $error_product) && $error_product["id"] == $_product->id ? 'background:red;' : '' ?>"disabled></div>
-            <div class="product_number fields"><input type="text" name="numberAvailable" value="<?= array_key_exists('error_numberAvailable', $error_product)  && $error_product["id"] == $_product->id ? 'Missing value' : $_product->numberAvailable . ' copies' ?>"  style="<?= array_key_exists('error_numberAvailable', $error_product) && $error_product["id"] == $_product->id  ? 'background:red;' : '' ?>" disabled></div>
+            <div class="product_price fields">
+                <input type="text" name="price" value="<?= $edit && $error_price && $isError ? 'Missing value' : $_product->price .' €'?>" style="<?= $edit && $error_price && $isError ? 'background:red;' : '' ?>" disabled>
+            </div>
+            <div class="product_number fields">
+                <input type="text" name="numberAvailable" value="<?= $edit && $error_number && $isError ? 'Missing value' : $_product->numberAvailable . ' copies' ?>"  style="<?=$edit && $error_number && $isError ? 'background:red;' : '' ?>" disabled>
+            </div>
         </div>
     </div>
 </form>
