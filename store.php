@@ -21,6 +21,7 @@
         $_POST["description"]="";
         $_POST["price"]="";
         $_POST["numberAvailable"]="";
+        $_FILES["img"]="";
 
         // define id as none to avoid errors further
         $error_product["id"]="none";
@@ -45,8 +46,7 @@
         <div class="logs-panel">
             <?php
             echo '<pre>';
-            print_r($_POST);
-            print_r($error_product);
+            print_r($_FILES);
             echo '</pre>';
              ?>
         </div>
@@ -78,6 +78,7 @@
             $error_name =false;
             $error_artist =false;
             $error_description =false;
+            $error_img =false;
             $error_price =false;
             $error_number =false;
             $edit = false;
@@ -92,6 +93,7 @@
                 if (array_key_exists('error_name', $error_add_product)) {$error_name = true;}
                 if (array_key_exists('error_artist', $error_add_product)) {$error_artist = true;}
                 if (array_key_exists('error_description', $error_add_product)) {$error_description = true;}
+                if (array_key_exists('error_img', $error_add_product)) {$error_img = true;}
                 if (array_key_exists('error_price', $error_add_product)) {$error_price = true;}
                 if (array_key_exists('error_numberAvailable', $error_add_product)) {$error_number = true;}
             }
@@ -101,11 +103,12 @@
                 if (array_key_exists('error_name', $error_product)) {$error_name = true;}
                 if (array_key_exists('error_artist', $error_product)) {$error_artist = true;}
                 if (array_key_exists('error_description', $error_product)) {$error_description = true;}
+                if (array_key_exists('error_img', $error_product)) {$error_img = true;}
                 if (array_key_exists('error_price', $error_product)) {$error_price = true;}
                 if (array_key_exists('error_numberAvailable', $error_product)) {$error_number = true;}
             }?>
 
-            <form class="product add_form" action="#" method="post">
+            <form class="product add_form" action="#" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="type" value="add">
                     <div class="product_content editable">
                         <div class="product_mask <?= !empty($error_add_product) ? 'hide' : ''?>">
@@ -123,6 +126,10 @@
                                 </div>
                                 <div class="product_desc fields">
                                     <textarea name="description"  placeholder="Description" style="<?= $add && $error_description ? 'background:red;' : '' ?>" ><?= $add && $error_description ? 'Missing value' : $add ? $_POST["description"] :'' ?></textarea>
+                                </div>
+                                <div class="product_image fields">
+                                    <input type="file" name="img" value="" style="<?= $add && $error_img ? 'background:red;' : '' ?>">
+                                    <span><?=$add &&  $error_img ? 'Missing value' : $add ? $_FILES["img"]["name"] : '' ?></span>
                                 </div>
                             </div>
                             <div class="product_fields_info second">
@@ -147,10 +154,10 @@
             }
         }
 ?>
-<form class="product"  action="#" method="POST">
+<form class="product"  action="#" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="type" value="edit" class="send_type">
     <input type="hidden" name="id" value="<?= $_product->id ?>">
-    <div class="product_content <?= $isError ? 'editable' : '' ?>">
+    <div class="product_content <?= $isError ? 'editable' : '' ?>" style="background-image:url('server/files/<?= $_product->img ?>')">
         <div class="product_actions">
             <div class="action edit"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
             <div class="action delete"><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></div>
@@ -165,6 +172,10 @@
             </div>
             <div class="product_desc fields">
                 <textarea name="description" style="<?=  $edit && $error_description && $isError  ? 'background:red;' : '' ?>" disabled><?= $edit && $error_description && $isError  ? 'Missing value' : $_product->description ?></textarea>
+            </div>
+            <span class="product_image_name">Image : <?= $edit && $error_img && $isError  ? 'Missing value' : $_product->img ?></span>
+            <div class="product_image fields">
+                <input type="file" name="img" value="" style="<?= $edit && $error_img ? 'background:red;' : '' ?>" disabled>
             </div>
         </div>
         <div class="product_fields_info second">

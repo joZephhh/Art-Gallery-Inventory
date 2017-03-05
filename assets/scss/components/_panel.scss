@@ -7,12 +7,13 @@
     overflow: hidden;
 
     .logs-panel {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         z-index: 10;
         padding: 10px;
         background: white;
+
     }
 
     header {
@@ -156,9 +157,10 @@
             .product_content {
                 width: 100%;
                 height: 100%;
-                background: url("../img/tableau1.jpg");
-                background-size: 100%;
-                background-position: center;
+
+                background-size: cover;
+                background-position: top;
+                background-repeat: no-repeat;
                 color: white;
                 border-radius: 5px;
                 padding: 15px;
@@ -167,7 +169,9 @@
                 flex-direction: column;
                 justify-content: space-between;
                 position: relative;
-                transition: 0.5s background-size;
+                transition: 1s background-size;
+                background-color: darkgrey;
+
                 .product_mask {
                     width: 100%;
                     height: 100%;
@@ -182,15 +186,17 @@
                     justify-content: center;
                     flex-direction: column;
                     a {
+                        cursor: pointer;
                         i {
                             font-size: 80px;
                             color:lightgrey;
-                            cursor: pointer;
                             transition-property: color;
                             transition-duration: 0.3s;
                             will-change:color;
+                            cursor: pointer;
                             &:hover {
                                 color:white;
+                                cursor: pointer;
 
                             }
                         }
@@ -264,19 +270,29 @@
                             &::-webkit-input-placeholder {
                                 color:lightgrey;
                             }
+                             text-shadow: 2px 2px #000000;
+                        }
+                        textarea {
+                            height: 200px;
                         }
 
-
+                        &.product_image {
+                            display: none;
+                        }
                     }
-
+            .product_image_name {
+                font-size: 10px;
+            }
                     .product_title {
                         font-weight: 700;
                         margin-bottom: 5px;
+                        width: 100%;
 
                         input {
                             margin: 0;
                             padding: 0;
                             font-size: 22px;
+                            width: 100%;
                         }
                     }
 
@@ -316,7 +332,6 @@
                 }
 
                 &:hover {
-                    background-size: 105%;
                     .product_actions {
                         opacity: 1;
                     }
@@ -335,15 +350,22 @@
                     input,
                     textarea {
                         background: rgba(231, 231, 231, 0.4);
-
+                         text-shadow: 0px 0px #000000;
                         &:focus {
                             background: #red;
                             background: rgba(76,175,80,0.7);
                         }
                     }
+                    &.product_image {
+                        display: block;
+                    }
+                }
+                .product_image_name {
+                    display: none;
                 }
             }
         }
+
             }
         }
     }
