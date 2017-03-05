@@ -11,18 +11,17 @@
     }
     if (empty($artist)) {
         $error_product["error_artist"] = "Missing Value";
-        $error_product["id"]=$id;
     }
     if (empty($description)) {
         $error_product["error_description"] = "Missing Value";
-        $error_product["id"]=$id;
     }
     if (empty($price)) {
         $error_product["error_price"] = "Missing Value";
-        $error_product["id"]=$id;
     }
     if (empty($numberAvailable)) {
         $error_product["error_numberAvailable"] = "Missing Value";
+    }
+    if (!empty($error_product)) {
         $error_product["id"]=$id;
     }
     else if (empty($error_product)) {

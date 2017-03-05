@@ -6,6 +6,9 @@ inventory.el.container = inventory.el.body.querySelector(".container-content");
 
 inventory.el.modal = inventory.el.container.querySelector(".modal");
 inventory.el.modal_close = inventory.el.modal.querySelector(".modal_button");
+inventory.el.add_form = inventory.el.container.querySelector(".add_form");
+inventory.el.add_form_background = inventory.el.add_form.querySelector(".product_mask");
+inventory.el.add_form_cta = inventory.el.add_form_background.querySelector("a");
 inventory.el.products = inventory.el.container.querySelectorAll(".product");
 inventory.el.edit = inventory.el.container.querySelectorAll(".edit");
 inventory.el.valid = inventory.el.container.querySelectorAll(".valid");
@@ -17,6 +20,20 @@ inventory.props  = {};
 inventory.props.isEditing = false;
 
 
+
+//add
+
+inventory.el.add_form_cta.addEventListener("click", function(e) {
+    inventory.props.isEditing = true;
+    e.preventDefault();
+    inventory.el.add_form_background.classList.add("hide");
+    let self = this.parentElement.parentElement.parentElement;
+    let valid_cta = self.querySelector(".product_actions .valid").classList.remove("hide")
+    valid_cta.addEventListener("click", function(e) {
+        e.preventDefault();
+        self.submit();
+    })
+})
 //edit
 for (let i = 0; i < inventory.el.edit.length; i++) {
     inventory.el.edit[i].addEventListener("click", function(e) {

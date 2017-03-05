@@ -1,13 +1,24 @@
 <?php
     include "components/db.php";
     $error_product=array();
+    $error_add_product=array();
     if(!empty($_POST)) {
-        if($_POST["type"] === "edit") {
+        if($_POST["type"] === "add") {
+            include 'components/add_products.php';
+        }
+        else if($_POST["type"] === "edit") {
             include 'components/edit_products.php';
         }
         else if ($_POST["type"] === "delete") {
             include 'components/delete_products.php';
         }
+    }
+    else {
+        $_POST["name"]="";
+        $_POST["artist"]="";
+        $_POST["description"]="";
+        $_POST["price"]="";
+        $_POST["numberAvailable"]="";
     }
 
     $query = $pdo->query('SELECT * FROM products');
@@ -53,6 +64,35 @@
                     <a href="#">OK</a>
                 </div>
             </div>
+            <? if($_POST["type"]=="add") {
+                $edit = false;
+                $add = true;
+            }
+            else if ($_POST["type"]=="edit") {
+                $add = false;
+                $edit = true;
+            }?>
+            <form class="product add_form" action="#" method="post">
+                    <input type="hidden" name="type" value="add">
+                    <div class="product_content editable">
+                        <div class="product_mask <?= !empty($error_add_product) ? 'hide' : ''?>">
+                            <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="product_actions">
+                            <div class="action valid <?= !empty($error_add_product)  ? '' : 'hide'?>"><a href=""><i class="fa fa-check" aria-hidden="true"></i></a></div>
+                            </div>
+                            <div class="product_fields_info">
+                                <div class="product_title fields"><input type="text" name="name"  value="<?=  array_key_exists('error_name', $error_add_product) ? 'Missing value' : $add ? $_POST["name"] :'' ?>" placeholder="Nom" style="<?= array_key_exists('error_name', $error_add_product) ? 'background:red;' : '' ?>"></div>
+                                <div class="product_artist fields"><input type="text" name="artist" value="<?= array_key_exists('error_artist', $error_add_product) ? 'Missing value' : $add ? $_POST["artist"] : '' ?>"  placeholder="Artiste" style="<?= array_key_exists('error_artist', $error_add_product) ? 'background:red;' : '' ?>"></div>
+                                <div class="product_desc fields"><textarea name="description"  placeholder="Description" style="<?= array_key_exists('error_description', $error_add_product) ? 'background:red;' : '' ?>" ><?= array_key_exists('error_description', $error_add_product) ? 'Missing value' : $add ? $_POST["description"] :'' ?></textarea></div>
+                            </div>
+                            <div class="product_fields_info second">
+                                <div class="product_price fields"><input type="text" name="price" value="<?= array_key_exists('error_price', $error_add_product) ? 'Missing value' : $add ? $_POST["price"] : '' ?>"  placeholder="Prix"  style="<?= array_key_exists('error_price', $error_add_product) ? 'background:red;' : '' ?>"></div>
+                                <div class="product_number fields"><input type="text" name="numberAvailable" value="<?= array_key_exists('error_numberAvailable', $error_add_product) ? 'Missing value' : $add ? $_POST["numberAvailable"] : '' ?>"  placeholder="Nombre de copies" style="<?= array_key_exists('error_numberAvailable', $error_add_product) ? 'background:red;' : '' ?>"></div>
+                            </div>
+
+                    </div>
+            </form>
 <?php
     foreach ($products as $key => $_product) {
 ?>
