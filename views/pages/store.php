@@ -1,5 +1,4 @@
 <?php
-    include "components/db.php"; // init database
     $error_product=array(); // init errors
     $error_add_product=array(); // init errors
     if(!empty($_POST)) {

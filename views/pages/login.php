@@ -2,7 +2,6 @@
 
 <?
 
-include "components/db.php";
 
 $errors_list = array();
 if (!empty($_POST)) {
