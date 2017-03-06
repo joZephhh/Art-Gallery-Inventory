@@ -6,13 +6,12 @@
 
 
 ## Features
-+   Secure login to access to the inventory
++   Secure login to access to the inventory, can't access if not logged
 +   Add products
 +   Edit products
 +   Delete products
 
 ### Soon
 
-+   Obligation to be logged to acces to the inventory (security update)
 +   Logs
 +   Add users permissions

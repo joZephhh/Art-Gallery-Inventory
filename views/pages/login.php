@@ -1,8 +1,4 @@
-
-
 <?
-
-
 $errors_list = array();
 if (!empty($_POST)) {
     $login = trim($_POST["mail"]);
@@ -23,8 +19,11 @@ if (!empty($_POST)) {
         $user = $prepare->fetch();
 
 // Test password
-if(gettype($user) ==="object" && $user->password == $password)
-    echo 'You shall pass !';
+if(gettype($user) ==="object" && $user->password == $password) {
+
+$_SESSION["canAccess"]=true;
+header('Location: /store');
+    }
 else
     $errors_list["password_error"] = "login error";
 
@@ -51,13 +50,9 @@ else {
 
     <div class="container login">
         <div class="logs">
-            <?
-            echo '<pre>';
-            print_r($errors_list);
-            echo '</pre>';
-            ?>
+
         </div>
-        <form class="form" action="login.php" method="post">
+        <form class="form" action="#" method="post">
             <i class="fa fa-sliders" aria-hidden="true"></i>
             <h3>Inventory gestion login</h3>
             <div class="form_row">
