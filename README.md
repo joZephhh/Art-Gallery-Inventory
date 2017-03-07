@@ -14,8 +14,9 @@
 +   Add products
 +   Edit products
 +   Delete products
++   Actions logs
 
 ### Soon
 
-+   Logs
++   Detailed Logs
 +   Add users permissions
