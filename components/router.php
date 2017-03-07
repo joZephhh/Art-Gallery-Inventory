@@ -1,22 +1,31 @@
 <?php
 
+// retrive the query
  $q = isset($_GET["q"]) ? $_GET["q"]  : '';
 
+//init session
 session_start();
+
+// compare queries with pages
  if ($q == '' || $q == 'login') {
          $page = 'login';
      }
-     else if ($q == 'store') {
-         if (isset($_SESSION["canAccess"])) {
+else if ($q == 'store') {
+         // if user has been logged
+     if (isset($_SESSION["canAccess"])) {
               $page = 'store';
          }
-         else {
+    else {
             header('Location: login');
          }
 
      }
-     else {
+else if ($q == 'logs') {
+         $page = 'logs';
+     }
+else {
          $page = '404';
      }
 
-     include 'views/pages/'.$page.'.php';
+// dynamic include with query
+include 'views/pages/'.$page.'.php';

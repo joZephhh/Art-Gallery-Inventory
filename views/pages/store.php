@@ -29,40 +29,12 @@
     // retrieve all products
     $query = $pdo->query('SELECT * FROM products');
     $products = $query->fetchAll();
+     include 'views/partials/header.php';
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>Admin management</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container panel">
-        <div class="logs-panel">
-            <?php
-            echo '<pre>';
-            print_r($_FILES);
-            echo '</pre>';
-             ?>
-        </div>
-        <header>
-            <div class="logo">
-            </div>
-            <div class="header_title">
-                <span>Welcome back, Joseph</span>
-            </div>
-        </header>
-        <ul class="inventory_menu">
-            <li><a href="#"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-        </ul>
-        <div class="container-content">
+
+        <div class="container-content panel">
             <!-- Show when user try to edit 2 things -->
             <div class="modal">
                 <p><i class="fa fa-exclamation" aria-hidden="true"></i></p>
@@ -193,6 +165,6 @@
 
         </div>
     </div>
-    <script src="assets/js/main.js" charset="utf-8"></script>
-</body>
-</html>
+<?php
+include "views/partials/footer.php"
+ ?>

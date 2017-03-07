@@ -1,6 +1,7 @@
 @import "components/_fonts";
 @import "components/fontawesome/font-awesome.scss";
 
+// change global theme
 $main_color:#4CAF50;
 $secondary_color:#66BB6A;
 
@@ -10,7 +11,9 @@ body,html {
     margin: 0;
     padding: 0;
     font-family: "Lato", sans-serif;
-}      
+}
 
-@import "components/_login";
-@import "components/_panel";
+@import "components/_general"; // header and menu styles
+@import "components/_login"; // login page
+@import "components/_panel"; // panel page
+@import "components/_logs"; // logs page

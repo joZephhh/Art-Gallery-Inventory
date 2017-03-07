@@ -1,0 +1,26 @@
+.container.panel.logs {
+    .log {
+        width: 600px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid;
+        margin: 10px auto;
+        border-radius: 5px;
+        padding: 10px;
+        color: blacks;
+        // type of logs
+        &.add {
+            background: lightgreen;
+            border-color:green;
+        }
+        &.edit {
+            background: rgb(231, 192, 91);
+            border-color:orange;
+        }
+        &.delete {
+            background: rgb(247, 149, 136);
+            border-color:red;
+        }
+    }
+}

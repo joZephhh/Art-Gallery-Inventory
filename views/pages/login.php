@@ -23,6 +23,7 @@ if(gettype($user) ==="object" && $user->password == $password) {
 
 $_SESSION["canAccess"]=true;
 header('Location: /store');
+exit;
     }
 else
     $errors_list["password_error"] = "login error";
@@ -49,9 +50,6 @@ else {
     <div class="background_color"></div>
 
     <div class="container login">
-        <div class="logs">
-
-        </div>
         <form class="form" action="#" method="post">
             <i class="fa fa-sliders" aria-hidden="true"></i>
             <h3>Inventory gestion login</h3>

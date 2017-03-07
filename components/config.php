@@ -18,3 +18,7 @@ catch (Exception $e)
 // Failed to connect
 die('Could not connect');
 }
+
+
+// Define your adress to serve correctly files
+define("URL", "http://localhost:8888");

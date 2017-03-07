@@ -1,0 +1,92 @@
+.container.panel {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    overflow: hidden;
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+
+    .logo {
+        width: 100px;
+        height: 100%;
+        background: $main_color;
+    }
+
+    .header_title {
+        width: calc(100% - 100px);
+        height: 100%;
+        background: #ececec;
+        text-align: left;
+
+        span {
+            line-height: 70px;
+            font-weight: 700;
+            padding-left: 50px;
+        }
+    }
+}
+
+.inventory_menu {
+    position: absolute;
+    width: 100px;
+    height: calc(100% - 70px);
+    background: $secondary_color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+        width: 100%;
+        height: 50px;
+        margin: 10px auto;
+        text-align: center;
+
+        &:first-of-type {
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+
+            i {
+                color: #E0E0E0;
+                font-size: 30px;
+                transition: 0.3s color, transform;
+                cursor: pointer;
+                transform: scale(1);
+                transform-origin: center;
+
+                &:hover {
+                    color: white;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+.container-content {
+    width: calc(100% - 100px);
+    height: calc( 100% - 70px);
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: flex-start;
+    overflow-y: scroll;
+    padding-top: 10px;
+    padding-left: 10px;
+}
