@@ -2590,7 +2590,8 @@ body .container.login {
       justify-content: flex-end;
       opacity: 0;
       transition: 0.3s opacity;
-      will-change: opacity; }
+      will-change: opacity;
+      z-index: 20; }
       .container.panel.store .container-content .product .product_content .product_actions .action {
         width: 40px;
         height: 40px;
@@ -2703,5 +2704,42 @@ body .container.login {
   .container.panel.logs .log.delete {
     background: #f79588;
     border-color: red; }
+
+.container.panel.users {
+  background: #e6e2e2; }
+  .container.panel.users .ocntainer-content {
+    padding: 10px; }
+  .container.panel.users .user {
+    margin: 10px 15px;
+    width: 300px;
+    height: 250px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    padding-top: 20px;
+    -moz-box-shadow: 1px 1px 15px 0px #656565;
+    -webkit-box-shadow: 1px 1px 15px 0px #656565;
+    -o-box-shadow: 1px 1px 15px 0px #656565;
+    box-shadow: 1px 1px 15px 0px #656565;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=15); }
+    .container.panel.users .user .user_picture {
+      width: 125px;
+      height: 125px;
+      margin: 0 auto;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background: red;
+      border-radius: 100%; }
+    .container.panel.users .user .user_name {
+      font-weight: bold; }
+    .container.panel.users .user .user_mail {
+      font-weight: italic; }
+    .container.panel.users .user .user_contributions {
+      color: grey; }
 
 /*# sourceMappingURL=style.css.map */

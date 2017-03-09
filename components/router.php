@@ -17,15 +17,23 @@ else if ($q == 'store') {
          }
     else {
             header('Location: login');
-         }
+    }
 
-     }
+}
+elseif ($q == "users") {
+    if (isset($_SESSION["canAccess"])) {
+             $page = 'users';
+        }
+   else {
+           header('Location: login');
+    }
+}
 else if ($q == 'logs') {
          $page = 'logs';
-     }
+}
 else {
          $page = '404';
-     }
+ }
 
 // dynamic include with query
 include 'views/pages/'.$page.'.php';

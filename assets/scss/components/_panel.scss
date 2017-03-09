@@ -133,6 +133,7 @@
                     opacity: 0;
                     transition: 0.3s opacity;
                     will-change: opacity;
+                    z-index: 20;
 
                     .action {
                         width: 40px;

@@ -63,6 +63,11 @@ else if (empty($error_add_product)){
     $logs-> bindValue("type", $_POST["type"]);
     $exec_logs = $logs->execute();
 
+    // set the contribution
+    $users = $pdo ->prepare("UPDATE users SET contributions = contributions +1 WHERE email = :email");
+    $users->bindValue("email", $_SESSION["mail"] );
+    $exec_users = $users->execute();
+
     // clear $_POST && $_FILES
     $_POST["type"]="";
     $_POST["name"]="";

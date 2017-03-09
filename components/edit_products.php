@@ -87,6 +87,12 @@
         $logs-> bindValue("picture", $name);
         $logs-> bindValue("type", $_POST["type"]);
         $exec_logs = $logs->execute();
+
+        // set the contribution
+        $users = $pdo ->prepare("UPDATE users SET contributions=contributions +1 WHERE email = :email");
+        $users->bindValue("email", $_SESSION["mail"] );
+        $exec_users = $users->execute();
+
     }
 
  ?>
