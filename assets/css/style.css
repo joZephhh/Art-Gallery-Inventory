@@ -2352,11 +2352,19 @@ header {
     width: calc(100% - 100px);
     height: 100%;
     background: #ececec;
-    text-align: left; }
-    header .header_title span {
-      line-height: 70px;
-      font-weight: 700;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    header .header_title p {
+      padding: 0;
+      margin: 0;
       padding-left: 50px; }
+      header .header_title p:first-of-type {
+        font-weight: 700; }
+      header .header_title p:last-of-type {
+        font-style: italic;
+        font-size: 12px; }
 
 .inventory_menu {
   position: absolute;

@@ -16,7 +16,9 @@
             <div class="logo">
             </div>
             <div class="header_title">
-                <span>Welcome back, <?= $_SESSION["username"]?></span>
+                <p>Welcome back, <?= $_SESSION["username"]?></p>
+                <p><?=$page?></p>
+
             </div>
         </header>
         <ul class="inventory_menu">

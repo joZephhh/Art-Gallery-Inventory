@@ -24,11 +24,22 @@ header {
         height: 100%;
         background: #ececec;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-        span {
-            line-height: 70px;
-            font-weight: 700;
+        p {
+
+            padding: 0;
+            margin: 0;
             padding-left: 50px;
+            &:first-of-type {
+                font-weight: 700;
+            }
+            &:last-of-type {
+                font-style: italic;
+                font-size: 12px;
+            }
         }
     }
 }
