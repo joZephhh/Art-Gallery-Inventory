@@ -7,6 +7,7 @@
     $price= (int)$_POST["price"];
     $numberAvailable= (int)$_POST["numberAvailable"];
     $img = ""; // avoid undefind in case of no change
+    $img_src = trim($_POST["img_src"]); // when no image is reupload on edit, keep the same picture
 
     // check and notice errors
     if (empty($name)) {
@@ -23,8 +24,15 @@
 
     if (!empty($_FILES)) {
         // retrieve the file
-        $img = $_FILES["img"];
-        if($_FILES['img']['error'] > 0) {
+        if (!$_FILES["img"]["name"]=='') {
+
+            $img = $_FILES["img"];
+            if($_FILES['img']['error'] > 0) {
+
+                $error_product["error_img"] = "Error in upload";
+            }
+        }
+        else if (empty($img_src)) {
             $error_product["error_img"] = "Error in upload";
         }
     }
@@ -43,8 +51,13 @@
 
     else if (empty($error_product)) {
         if (!empty($_FILES)) {
-            // upload and move file
-            $img_name = $_FILES["img"]["name"];
+            if (!$_FILES["img"]["name"]=='') {
+                $img_name = $_FILES["img"]["name"];
+
+            }
+            else {
+                $img_name= $img_src;
+            }
             move_uploaded_file($_FILES['img']['tmp_name'], "server/files/".$img_name);
         }
         $error_product["id"]="none"; // avoid errors
@@ -69,7 +82,8 @@
         $exec = $prepare->execute();
 
         // set logs
-        $logs = $pdo-> prepare("INSERT INTO logs (picture, type) VALUES (:picture, :type)");
+        $logs = $pdo-> prepare("INSERT INTO logs (name, picture, type) VALUES (:username, :picture, :type)");
+        $logs-> bindValue("username", $_SESSION["username"]);
         $logs-> bindValue("picture", $name);
         $logs-> bindValue("type", $_POST["type"]);
         $exec_logs = $logs->execute();

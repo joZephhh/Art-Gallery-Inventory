@@ -10,7 +10,7 @@ include 'views/partials/header.php';
     <!-- Foreach logs, show it with relative colors-->
     <?php foreach ($logs_data as $key => $_log): ?>
         <div class="log <?= $_log->type ?>">
-        <span>Un utilisateur a
+        <span><?= $_log->name ?> a
             <?
             if ($_log->type === 'edit') {echo "modifié";}
             else if ($_log->type === 'add') {echo "ajouté";}

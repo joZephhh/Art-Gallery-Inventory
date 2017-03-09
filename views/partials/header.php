@@ -10,13 +10,17 @@
 <body>
     <div class="container panel <?=$page?>">
         <div class="logs-panel">
-                <!-- logs debug php-->
+                <?php 
+                    echo '<pre>';
+                    print_r($_FILES);
+                    echo '</pre>';
+                 ?>
         </div>
         <header>
             <div class="logo">
             </div>
             <div class="header_title">
-                <span>Welcome back, Joseph</span>
+                <span>Welcome back, <?= $_SESSION["username"]?></span>
             </div>
         </header>
         <ul class="inventory_menu">

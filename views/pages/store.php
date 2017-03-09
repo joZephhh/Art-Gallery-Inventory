@@ -144,6 +144,7 @@
             <div class="product_desc fields">
                 <textarea name="description" style="<?=  $edit && $error_description && $isError  ? 'background:red;' : '' ?>" disabled><?= $edit && $error_description && $isError  ? 'Missing value' : $_product->description ?></textarea>
             </div>
+            <input type="hidden" name="img_src" value="<?= $edit && $error_img && $isError  ? 'Missing value' : $_product->img ?>">
             <span class="product_image_name">Image : <?= $edit && $error_img && $isError  ? 'Missing value' : $_product->img ?></span>
             <div class="product_image fields">
                 <input type="file" name="img" value="" style="<?= $edit && $error_img ? 'background:red;' : '' ?>" disabled>

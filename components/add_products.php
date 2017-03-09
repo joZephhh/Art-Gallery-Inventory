@@ -57,7 +57,8 @@ else if (empty($error_add_product)){
 
 
     // set data in logs
-    $logs = $pdo-> prepare("INSERT INTO logs (picture, type) VALUES (:picture, :type)");
+    $logs = $pdo-> prepare("INSERT INTO logs (name, picture, type) VALUES (:username, :picture, :type)");
+    $logs-> bindValue("username", $_SESSION["username"]);
     $logs-> bindValue("picture", $name);
     $logs-> bindValue("type", $_POST["type"]);
     $exec_logs = $logs->execute();

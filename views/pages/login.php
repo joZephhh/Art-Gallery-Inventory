@@ -22,6 +22,7 @@ if (!empty($_POST)) {
 if(gettype($user) ==="object" && $user->password == $password) {
 
 $_SESSION["canAccess"]=true;
+$_SESSION["username"] =$user->name;
 header('Location: /store');
 exit;
     }
