@@ -2686,15 +2686,18 @@ body .container.login {
         text-shadow: 0 0 #000000; }
         .container.panel.store .container-content .product .product_content.editable .product_fields_info .fields input:focus,
         .container.panel.store .container-content .product .product_content.editable .product_fields_info .fields textarea:focus {
-          background: #red;
           background: rgba(76, 175, 80, 0.7); }
       .container.panel.store .container-content .product .product_content.editable .product_fields_info .fields.product_image {
         display: block; }
+        .container.panel.store .container-content .product .product_content.editable .product_fields_info .fields.product_image span {
+          color: white;
+          background: red;
+          font-size: 10px; }
       .container.panel.store .container-content .product .product_content.editable .product_fields_info .product_image_name {
         display: none; }
 
 .container.panel.logs .log {
-  width: 600px;
+  width: 800px;
   text-align: center;
   height: 30px;
   line-height: 30px;
@@ -2715,16 +2718,15 @@ body .container.login {
 
 .container.panel.users {
   background: #e6e2e2; }
-  .container.panel.users .ocntainer-content {
-    padding: 10px; }
+  .container.panel.users .container-content {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap; }
   .container.panel.users .user {
     margin: 10px 15px;
     width: 300px;
     height: 250px;
     background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
     border-radius: 5px;
     display: inline-block;
@@ -2741,7 +2743,6 @@ body .container.login {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background: red;
       border-radius: 100%; }
     .container.panel.users .user .user_name {
       font-weight: bold; }
@@ -2749,5 +2750,48 @@ body .container.login {
       font-weight: italic; }
     .container.panel.users .user .user_contributions {
       color: grey; }
+    .container.panel.users .user.user_add .user_picture {
+      line-height: 85px;
+      text-align: center;
+      background: #4CAF50;
+      width: 75px;
+      height: 75px;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+      .container.panel.users .user.user_add .user_picture i {
+        color: white;
+        font-size: 20px; }
+      .container.panel.users .user.user_add .user_picture.error {
+        background: red; }
+    .container.panel.users .user.user_add span {
+      font-size: 10px;
+      margin-top: 5px; }
+    .container.panel.users .user.user_add .user_picture_field {
+      display: none; }
+    .container.panel.users .user.user_add input {
+      display: block;
+      border: none;
+      border-bottom: 1px solid #4CAF50;
+      margin: 15px auto;
+      font-size: 16px; }
+      .container.panel.users .user.user_add input.user_name {
+        font-weight: normal; }
+      .container.panel.users .user.user_add input:focus {
+        color: black;
+        outline-width: 0; }
+      .container.panel.users .user.user_add input.user_form_submit {
+        background: none;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 100%;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer; }
+      .container.panel.users .user.user_add input.error {
+        background: #de6767;
+        color: white; }
 
 /*# sourceMappingURL=style.css.map */

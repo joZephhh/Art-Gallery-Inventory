@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="product_image fields">
                                     <input type="file" name="img" value="" style="<?= $add && $error_img ? 'background:red;' : '' ?>">
-                                    <span><?=$add &&  $error_img ? 'Missing value' : $add ? $_FILES["img"]["name"] : '' ?></span>
+                                    <span><?= $add&& $error_img ?  $error_add_product["error_img"] : '' ?></span>
                                 </div>
                             </div>
                             <div class="product_fields_info second">
@@ -148,6 +148,7 @@
             <span class="product_image_name">Image : <?= $edit && $error_img && $isError  ? 'Missing value' : $_product->img ?></span>
             <div class="product_image fields">
                 <input type="file" name="img" value="" style="<?= $edit && $error_img ? 'background:red;' : '' ?>" disabled>
+                <span><?= $edit && $error_img ?  $error_product["error_img"] : '' ?></span>
             </div>
         </div>
         <div class="product_fields_info second">

@@ -9,16 +9,12 @@
 </head>
 <body>
     <div class="container panel <?=$page?>">
-        <div class="logs-panel">
-                <!-- logs debug php-->
-        </div>
         <header>
             <div class="logo">
             </div>
             <div class="header_title">
                 <p>Welcome back, <?= $_SESSION["username"]?></p>
                 <p><?=$page?></p>
-
             </div>
         </header>
         <ul class="inventory_menu">

@@ -1,16 +1,16 @@
 .container.panel.users {
     background: rgb(230, 226, 226);
-    .ocntainer-content {
+
+    .container-content {
         padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
     }
     .user {
         margin: 10px 15px;
         width: 300px;
         height: 250px;
         background: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         text-align: center;
         border-radius: 5px;
         display: inline-block;
@@ -27,7 +27,7 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, St
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background: red;
+
             border-radius: 100%;
         }
         .user_name {
@@ -38,6 +38,62 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, St
         }
         .user_contributions {
             color:grey;
+        }
+        &.user_add {
+            .user_picture{
+                line-height: 85px;
+                text-align: center;
+                background: $main_color;
+                width: 75px;
+                height: 75px;
+                cursor: pointer;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                i {
+                    color: white;
+                    font-size: 20px;
+                }
+                &.error {
+                    background: red;
+                }
+            }
+            span {
+                font-size: 10px;
+                margin-top: 5px;
+            }
+            .user_picture_field {
+                display: none;
+            }
+            input {
+                display: block;
+                border: none;
+                border-bottom: 1px solid $main_color;
+                margin: 15px auto;
+                font-size: 16px;
+            &.user_name {
+                font-weight: normal;
+            }
+            &:focus {
+                color:black;
+                outline-width: 0;
+            }
+            &.user_form_submit {
+                background: none;
+                background-color: $main_color;
+                text-align: center;
+                line-height: 100%;
+                color:white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer
+            }
+            &.error {
+                background: rgb(222, 103, 103);
+                color:white;
+            }
+            }
+
         }
     }
 }

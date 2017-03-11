@@ -28,8 +28,17 @@
 
             $img = $_FILES["img"];
             if($_FILES['img']['error'] > 0) {
-
                 $error_product["error_img"] = "Error in upload";
+            }
+            if($_FILES["img"]["error"]==0) {
+                $valid_extensions= array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+                $extension_upload = strtolower(  substr(  strrchr($_FILES['img']['name'], '.')  ,1)  );
+                if (!in_array($extension_upload,$valid_extensions)) {
+                    $error_product["error_img"] = "File extension is not accepted";
+                }
+                else if($_FILES['img']['size'] > 2000000) { // 2mo
+                    $error_product["error_img"] = "File too big";
+                }
             }
         }
         else if (empty($img_src)) {

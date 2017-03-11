@@ -277,13 +277,17 @@
                                 text-shadow: 0 0 #000000;
 
                                 &:focus {
-                                    background: #red;
                                     background: rgba(76,175,80,0.7);
                                 }
                             }
 
                             &.product_image {
                                 display: block;
+                                span {
+                                    color: white;
+                                    background:red;
+                                    font-size: 10px;
+                                }
                             }
                         }
 
