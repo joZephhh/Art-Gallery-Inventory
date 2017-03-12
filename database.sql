@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Dim 12 Mars 2017 à 14:56
+-- Généré le :  Dim 12 Mars 2017 à 19:21
 -- Version du serveur :  5.6.34
 -- Version de PHP :  7.1.0
 
@@ -110,7 +110,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `picture`, `contributions`) VALUES
-(2, 'joseph.q@me.com', '28e5db6023f3f830251c1361767bd13fddf125e9b64593d1ddfa70e1d3768b68', 'Joseph Quercia', 'server/files/joseph-quercia.jpg', 44),
+(2, 'joseph.q@me.com', '44964cbe349e8f8e112e5c9b9d3e1b5422d1e70d5fb846eaffcaa0f2d73ffd13', 'Joseph Quercia', 'server/files/joseph-quercia.jpg', 44),
 (89, 'lena.mari@gmail.com', '52c891e46fd603b4bd9f53f209d4a03a2b7a7bf54a5a5a35b30335e09842a6a6', 'Léna Mari', 'server/files/15235472_1437876129557660_305052000474605242_o.jpg', 8),
 (90, 'antoine2@moues.fr', '75735ec8785e4c5f7c8064ea2133c742b73360b39eab265de4a0a4bb639d346b', 'Antoine Mouës', 'server/files/14681655_1118594374842662_6584283876361373278_n.jpg', 0);
 
