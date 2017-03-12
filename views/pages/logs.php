@@ -14,10 +14,11 @@ include 'views/partials/header.php';
             <?
             if ($_log->type === 'edit') {echo "modifié";}
             else if ($_log->type === 'add') {echo "ajouté";}
-            else {echo "supprimé";}
+            else if ($_log->type === 'add_user') {echo "ajouté l'utilisateur";}
+            else if ($_log->type === 'delete') {echo "supprimé";}
             ?>
         </span>
-        <span>l'oeuvre <b><?= " ".$_log->picture ?></b>,</span>
+        <span><?= $_log->type === 'add_user' ? '' :"l'oeuvre"?> <b><?= " ".$_log->picture ?></b>,</span>
         <span class="dates_to_convert"><?= $_log->date ?></span>
         </div>
     <?php endforeach; ?>

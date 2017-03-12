@@ -1,4 +1,7 @@
 .container.panel.logs {
+    .container-content {
+        height: calc( 100% - 80px);
+    }
     .log {
         width: 800px;
         text-align: center;
@@ -21,6 +24,10 @@
         &.delete {
             background: rgb(247, 149, 136);
             border-color:red;
+        }
+        &.add_user {
+            background: rgb(82, 155, 252);
+            border-color:blue;
         }
     }
 }

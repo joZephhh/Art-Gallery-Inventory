@@ -2416,8 +2416,8 @@ header {
   top: 70px;
   left: 100px;
   overflow-y: scroll;
-  padding-top: 10px;
-  padding-left: 10px; }
+  padding: 10px;
+  margin-bottom: 10px; }
 
 body .background {
   position: absolute;
@@ -2707,6 +2707,8 @@ body .container.login {
       .container.panel.store .container-content .product .product_content.editable .product_fields_info .product_image_name {
         display: none; }
 
+.container.panel.logs .container-content {
+  height: calc( 100% - 80px); }
 .container.panel.logs .log {
   width: 800px;
   text-align: center;
@@ -2726,6 +2728,9 @@ body .container.login {
   .container.panel.logs .log.delete {
     background: #f79588;
     border-color: red; }
+  .container.panel.logs .log.add_user {
+    background: #529bfc;
+    border-color: blue; }
 
 .container.panel.users {
   background: #e6e2e2; }

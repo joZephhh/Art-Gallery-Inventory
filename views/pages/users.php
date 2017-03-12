@@ -61,6 +61,12 @@ $error_users = []; // init error array
                 $prepare->bindValue("password", $user_password);
                 $prepare->execute();
 
+                $logs = $pdo-> prepare("INSERT INTO logs (name, picture, type) VALUES (:username, :picture, :type)");
+                $logs-> bindValue("username", $_SESSION["username"]);
+                $logs-> bindValue("picture", $user_name);
+                $logs-> bindValue("type", "add_user");
+                $exec_logs = $logs->execute();
+
                 // empty all fields
                 $_POST["user_name"] ="";
                 $_POST["user_mail"] ="";
