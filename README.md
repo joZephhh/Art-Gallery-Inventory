@@ -5,7 +5,7 @@
 + Create your own database and import tables and its contents from `database.sql`
 +  Define your database in config.php at root project
 +  Define your local address and port in config.php at root project
-+ Go to your local adress and port, normally you arrive on the login page and enter this logins :
++ Go to your local address and port, normally you arrive on the login page and enter this logins :
 
 | Email | Password |
 | --- | --- |
@@ -19,7 +19,7 @@ Once it's done, with your terminal, go to the cloned github directory :
 ````
 cd Art-Gallery-Inventory/builder
 ````
- and run the command line `npm install` in the directory. This will install all the development dependecies.
+ and run the command line `npm install` in the directory. This will install all the development dependencies.
 
 ## Features
 +   Secure login to access to the inventory, can't access if not logged
