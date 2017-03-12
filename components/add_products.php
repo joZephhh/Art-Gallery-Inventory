@@ -88,6 +88,6 @@ else if (empty($error_add_product)){
 
 }
 
-header("location: /store");
+header("location: ".URL."/store");
 exit;
  ?>

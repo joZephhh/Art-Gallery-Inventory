@@ -23,7 +23,7 @@ if (!empty($_POST)) {
             $_SESSION["canAccess"]=true;
             $_SESSION["username"] =$user->name;
             $_SESSION["mail"] =$user->email;
-            header('Location: /store');
+            header('Location: '.URL.'/store');
             exit;
         }
         else{
