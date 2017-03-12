@@ -1,5 +1,6 @@
 .container.panel.store {
     .container-content {
+        // 2 actions modal
         .modal {
             background: $main_color;
             position: absolute;
@@ -41,7 +42,7 @@
                 }
             }
         }
-
+        // each product
         .product {
             width: 400px;
             height: 310px;
@@ -113,7 +114,7 @@
                         display: none;
                     }
                 }
-
+                // add, edit, delete buttons
                 .product_actions {
                     position: absolute;
                     top: -15px;
@@ -160,7 +161,7 @@
                         }
                     }
                 }
-
+                // each fields of the .product form
                 .product_fields_info {
                     width: 100%;
                     height: auto;

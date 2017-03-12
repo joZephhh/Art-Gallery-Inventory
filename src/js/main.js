@@ -82,14 +82,15 @@ if (inventory.el.body_store) { // if the location is : store
     inventory.el.modal_close.addEventListener("click", function(e) {
         e.preventDefault();
         inventory.el.modal.classList.remove("active");
-    }// if the location is : logs
-    )
+    })// if the location is : logs
+
 } else if (inventory.el.body_logs) {
     moment.locale("fr") // set momentjs to fr values
     inventory.el.dates = inventory.el.body_logs.querySelectorAll(".dates_to_convert"); // retrieve all data to convert
     for (var i = 0; i < inventory.el.dates.length; i++) {
         inventory.el.dates[i].innerText = moment(inventory.el.dates[i].innerText).fromNow(); // convert to relative time
     }
+
 } else if (inventory.el.body_users) {
     inventory.el.add_user_form = inventory.el.body_users.querySelector(".user.user_add");
     inventory.el.add_user_picture = inventory.el.add_user_form.querySelector(".user_picture");

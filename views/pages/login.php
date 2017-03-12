@@ -12,25 +12,24 @@ if (!empty($_POST)) {
     }
     else if(empty($errors_list)){
         define("SALT","foo");
-        $password =hash("sha256", SALT.$password);
+        $password =hash("sha256", SALT.$password); // add a salt and hash the password
+        // SQL request
         $prepare = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
         $prepare->bindValue('email',$login);
         $prepare->execute();
         $user = $prepare->fetch();
-
-// Test password
-if(gettype($user) ==="object" && $user->password == $password) {
-
-$_SESSION["canAccess"]=true;
-$_SESSION["username"] =$user->name;
-$_SESSION["mail"] =$user->email;
-header('Location: /store');
-exit;
+        // Test password
+        if(gettype($user) ==="object" && $user->password == $password) {
+            $_SESSION["canAccess"]=true;
+            $_SESSION["username"] =$user->name;
+            $_SESSION["mail"] =$user->email;
+            header('Location: /store');
+            exit;
+        }
+        else{
+            $errors_list["password_error"] = "login error";
+        }
     }
-else
-    $errors_list["password_error"] = "login error";
-
-}
 }
 else {
     $_POST["mail"]="";
@@ -38,13 +37,11 @@ else {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="<?=URL?>/assets/css/main.min.css">
     <title>Login - Inventory</title>
 </head>
 <body>

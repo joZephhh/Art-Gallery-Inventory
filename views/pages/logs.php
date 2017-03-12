@@ -12,10 +12,10 @@ include 'views/partials/header.php';
         <div class="log <?= $_log->type ?>">
         <span><?= $_log->name ?> a
             <?
-            if ($_log->type === 'edit') {echo "modifié";}
-            else if ($_log->type === 'add') {echo "ajouté";}
-            else if ($_log->type === 'add_user') {echo "ajouté l'utilisateur";}
-            else if ($_log->type === 'delete') {echo "supprimé";}
+                if ($_log->type === 'edit') {echo "modifié";}
+                else if ($_log->type === 'add') {echo "ajouté";}
+                else if ($_log->type === 'add_user') {echo "ajouté l'utilisateur";}
+                else if ($_log->type === 'delete') {echo "supprimé";}
             ?>
         </span>
         <span><?= $_log->type === 'add_user' ? '' :"l'oeuvre"?> <b><?= " ".$_log->picture ?></b>,</span>

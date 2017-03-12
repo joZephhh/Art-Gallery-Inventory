@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>Admin management</title>
+    <title>Art Gallery inventory gestion</title>
     <link rel="stylesheet" href="<?=URL?>/assets/css/main.min.css">
 </head>
 <body>
