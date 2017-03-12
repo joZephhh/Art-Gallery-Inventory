@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:8889
--- Généré le :  Dim 12 Mars 2017 à 19:21
+-- Généré le :  Dim 12 Mars 2017 à 20:12
 -- Version du serveur :  5.6.34
 -- Version de PHP :  7.1.0
 
@@ -110,7 +110,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`, `picture`, `contributions`) VALUES
-(2, 'joseph.q@me.com', '44964cbe349e8f8e112e5c9b9d3e1b5422d1e70d5fb846eaffcaa0f2d73ffd13', 'Joseph Quercia', 'server/files/joseph-quercia.jpg', 44),
+(2, 'joseph.q@me.com', '44964cbe349e8f8e112e5c9b9d3e1b5422d1e70d5fb846eaffcaa0f2d73ffd13', 'Joseph Quercia', 'server/files/joseph-quercia.jpg', 48),
 (89, 'lena.mari@gmail.com', '52c891e46fd603b4bd9f53f209d4a03a2b7a7bf54a5a5a35b30335e09842a6a6', 'Léna Mari', 'server/files/15235472_1437876129557660_305052000474605242_o.jpg', 8),
 (90, 'antoine2@moues.fr', '75735ec8785e4c5f7c8064ea2133c742b73360b39eab265de4a0a4bb639d346b', 'Antoine Mouës', 'server/files/14681655_1118594374842662_6584283876361373278_n.jpg', 0);
 
@@ -144,17 +144,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
