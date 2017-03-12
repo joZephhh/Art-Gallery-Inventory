@@ -95,7 +95,7 @@ $error_users = []; // init error array
     $users = $query->fetchAll();
     include 'views/partials/header.php';
  ?>
- 
+
  <div class="container-content">
      <form class="user user_add" method="POST" enctype="multipart/form-data">
          <div class="user_picture <?=array_key_exists('error_img', $error_users) ? 'error' : '' ?>"><i class="fa fa-plus" aria-hidden="true"></i></div>
