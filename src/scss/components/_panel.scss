@@ -1,0 +1,293 @@
+.container.panel.store {
+    .container-content {
+        .modal {
+            background: $main_color;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 10;
+            text-align: center;
+            border-radius: 10px;
+            padding: 20px;
+            -moz-box-shadow: 2px 2px 5px 0 #656565;
+            -webkit-box-shadow: 2px 2px 5px 0 #656565;
+            -o-box-shadow: 2px 2px 5px 0 #656565;
+            box-shadow: 2px 2px 5px 0 #656565;
+            filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            p {
+                i {
+                    font-size: 30px;
+                }
+                color: white;
+            }
+
+            .modal_button {
+                width: 100px;
+                margin: 0 auto;
+                padding: 10px;
+                background: white;
+                border-radius: 5px;
+
+                a {
+                    text-decoration: none;
+                    color: $main_color;
+                }
+            }
+        }
+
+        .product {
+            width: 400px;
+            height: 310px;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            -webkit-box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.75);
+            -moz-box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.75);
+            box-shadow: 5px 5px 15px 0 rgba(0,0,0,0.75);
+            position: relative;
+
+            &:last-of-type {
+                .product_content {
+                    margin-bottom: 40px;
+                }
+            }
+
+            .product_content {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: top;
+                background-repeat: no-repeat;
+                color: white;
+                border-radius: 5px;
+                padding: 15px;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                transition: 1s background-size;
+                background-color: darkgrey;
+
+                .product_mask {
+                    width: 100%;
+                    height: 100%;
+                    background: $main_color;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                    border-radius: 5px;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    a {
+                        cursor: pointer;
+
+                        i {
+                            font-size: 80px;
+                            color: lightgrey;
+                            transition-property: color;
+                            transition-duration: 0.3s;
+                            will-change: color;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: white;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &.hide {
+                        display: none;
+                    }
+                }
+
+                .product_actions {
+                    position: absolute;
+                    top: -15px;
+                    right: -15px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    opacity: 0;
+                    transition: 0.3s opacity;
+                    will-change: opacity;
+                    z-index: 20;
+
+                    .action {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 20px;
+                        margin: 0 5px;
+                        text-align: center;
+                        line-height: 40px;
+
+                        a {
+                            color: white;
+                            text-decoration: none;
+
+                            i {
+                                color: white;
+                            }
+                        }
+
+                        &.delete {
+                            background: red;
+                        }
+
+                        &.edit {
+                            background: orange;
+                        }
+
+                        &.valid {
+                            background: green;
+                        }
+
+                        &.hide {
+                            display: none;
+                        }
+                    }
+                }
+
+                .product_fields_info {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                    opacity: 0;
+                    transition: 0.3s opacity;
+                    will-change: opacity;
+
+                    .fields {
+                        input,
+                        textarea {
+                            outline: none;
+                            border: none;
+                            background: none;
+                            color: white;
+
+                            &::-webkit-input-placeholder {
+                                color: lightgrey;
+                            }
+                            text-shadow: 2px 2px #000000;
+                        }
+
+                        textarea {
+                            height: 200px;
+                        }
+
+                        &.product_image {
+                            display: none;
+                        }
+                    }
+
+                    .product_image_name {
+                        font-size: 10px;
+                    }
+
+                    .product_title {
+                        font-weight: 700;
+                        margin-bottom: 5px;
+                        width: 100%;
+
+                        input {
+                            margin: 0;
+                            padding: 0;
+                            font-size: 22px;
+                            width: 100%;
+                        }
+                    }
+
+                    .product_artist {
+                        margin-bottom: 5px;
+
+                        input {
+                            font-style: italic;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .product_desc {
+                        width: calc(90% - 15px);
+
+                        textarea {
+                            width: 100%;
+                        }
+                    }
+
+                    .product_number,
+                    .product_price {
+                        font-size: 18px;
+
+                        input {
+                            font-size: 18px;
+                            text-align: center;
+                        }
+                    }
+
+                    &.second {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                }
+
+                &:hover {
+                    .product_actions {
+                        opacity: 1;
+                    }
+
+                    .product_fields_info {
+                        opacity: 1;
+                    }
+                }
+
+                &.editable {
+                    .product_actions {
+                        opacity: 1;
+                    }
+
+                    .product_fields_info {
+                        opacity: 1;
+
+                        .fields {
+                            input,
+                            textarea {
+                                background: rgba(231, 231, 231, 0.4);
+                                text-shadow: 0 0 #000000;
+
+                                &:focus {
+                                    background: rgba(76,175,80,0.7);
+                                }
+                            }
+
+                            &.product_image {
+                                display: block;
+                                span {
+                                    color: white;
+                                    background:red;
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+
+                        .product_image_name {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

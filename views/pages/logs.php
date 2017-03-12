@@ -23,8 +23,7 @@ include 'views/partials/header.php';
         </div>
     <?php endforeach; ?>
 </div>
-<!-- relative time -->
-<script src="<?= URL ?>/assets/js/momentjs.js" charset="utf-8"></script>
+
 <?php
 // include footer
 include 'views/partials/footer.php';
