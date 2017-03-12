@@ -2355,7 +2355,8 @@ header {
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    position: relative; }
     header .header_title p {
       padding: 0;
       margin: 0;
@@ -2365,6 +2366,16 @@ header {
       header .header_title p:last-of-type {
         font-style: italic;
         font-size: 12px; }
+    header .header_title .download_xls {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      text-align: center;
+      border-radius: 5px; }
 
 .inventory_menu {
   position: absolute;
