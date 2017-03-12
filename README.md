@@ -1,6 +1,6 @@
 # Art Gallery inventory gestion
 
-![alt text](https://github.com/jozephhh/Art-Gallery-Inventory/raw/master/src/images/screenshot.png "Screenshot of the project")
+![alt text](https://github.com/jozephhh/Art-Gallery-Inventory/raw/master/src/img/screenshot.png "Screenshot of the project")
 ## Install the project
 + Create your own database and import tables and its contents from `database.sql`
 +  Define your database in config.php at root project
