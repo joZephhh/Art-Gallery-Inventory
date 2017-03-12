@@ -124,7 +124,7 @@
 <form class="product"  action="#" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="type" value="edit" class="send_type">
     <input type="hidden" name="id" value="<?= $_product->id ?>">
-    <div class="product_content <?= $isError ? 'editable' : '' ?>" style="background-image:url('server/files/<?= $_product->img ?>')">
+    <div class="product_content <?= $isError ? 'editable' : '' ?>" style="background-image:url('<?=URL?>/server/files/<?= $_product->img ?>')">
         <div class="product_actions">
             <div class="action edit"><a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
             <div class="action delete"><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></div>

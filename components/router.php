@@ -9,10 +9,10 @@ session_start();
 // compare queries with pages
  if ($q == '') {
     if (!isset($_SESSION["canAccess"])) {
-        header('Location: '.URL.'login'); // redirect to login if user is not logged
+        header('Location: '.URL.'/login'); // redirect to login if user is not logged
     }
     else {
-        header('Location: '.URL.'store'); // redirect to store if user is logged
+        header('Location: '.URL.'/store'); // redirect to store if user is logged
     }
 }
 else if($q == 'login') {
@@ -24,7 +24,7 @@ else if ($q == 'store') {
         $page = 'store'; // accept to load store page if user is logged
      }
     else {
-        header('Location: '.URL.'login'); // if user if not logged redirect to login page
+        header('Location: '.URL.'/login'); // if user if not logged redirect to login page
     }
 
 }
@@ -34,7 +34,7 @@ else if ($q == "users") {
         $page = 'users'; // accept to load users page if user is logged
     }
    else {
-       header('Location: '.URL.'login'); // if user if not logged redirect to login page
+       header('Location: '.URL.'/login'); // if user if not logged redirect to login page
     }
 
 }
